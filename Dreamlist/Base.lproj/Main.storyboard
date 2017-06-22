@@ -122,7 +122,6 @@
                                         <connections>
                                             <outlet property="details" destination="Jh7-CG-zRH" id="oDw-cd-sWr"/>
                                             <outlet property="price" destination="e6F-qi-KlY" id="k7U-l4-UlG"/>
-                                            <outlet property="prince" destination="e6F-qi-KlY" id="Oua-iY-fg0"/>
                                             <outlet property="thumb" destination="1ZL-uf-HAi" id="EiP-kA-H5o"/>
                                             <outlet property="title" destination="3c5-yZ-CC1" id="3fy-Bc-drF"/>
                                         </connections>
@@ -312,6 +311,6 @@
         <image name="mbp15touch-gray-select-201610" width="452" height="420"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Uj6-HL-1LH"/>
+        <segue reference="Vh1-be-a2l"/>
     </inferredMetricsTieBreakers>
 </document>

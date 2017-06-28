@@ -39,7 +39,7 @@
                                 <rect key="frame" x="16" y="132" width="288" height="436"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" rowHeight="150" id="CJf-g1-3L3" customClass="Itemcell" customModule="Dreamlist" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" selectionStyle="none" indentationWidth="10" reuseIdentifier="Itemcell" rowHeight="150" id="CJf-g1-3L3" customClass="Itemcell" customModule="Dreamlist" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="288" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CJf-g1-3L3" id="4hO-uz-4dE">
@@ -170,7 +170,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imagePick" translatesAutoresizingMaskIntoConstraints="NO" id="6ve-th-Kgs">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imagePick" translatesAutoresizingMaskIntoConstraints="NO" id="6ve-th-Kgs">
                                 <rect key="frame" x="16" y="72" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="EIW-My-Sbx"/>
@@ -183,6 +183,9 @@
                                     <constraint firstAttribute="width" constant="100" id="Dny-fp-EoR"/>
                                     <constraint firstAttribute="height" constant="100" id="lYK-rs-JbK"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="addImage:" destination="Bhf-sm-Axn" eventType="touchUpInside" id="qep-ck-wN1"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qEh-vD-te3" customClass="CustomTextField" customModule="Dreamlist" customModuleProvider="target">
                                 <rect key="frame" x="124" y="72" width="180" height="40"/>
@@ -233,6 +236,9 @@
                                 <state key="normal" title="Save Item">
                                     <color key="titleColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 </state>
+                                <connections>
+                                    <action selector="savePrssed:" destination="Bhf-sm-Axn" eventType="touchUpInside" id="Fxh-EW-gxI"/>
+                                </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8bK-lI-wal">
                                 <rect key="frame" x="0.0" y="284" width="320" height="216"/>
@@ -275,8 +281,18 @@
                     <navigationItem key="navigationItem" title="Add/Edit" id="3GL-Tk-Luu">
                         <barButtonItem key="rightBarButtonItem" systemItem="trash" id="gKV-uP-8Rb">
                             <color key="tintColor" red="1" green="0.34509803919999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="deletePressd:" destination="Bhf-sm-Axn" id="527-tQ-IIL"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="detailsField" destination="4tF-Sd-uzF" id="lFL-IQ-DgY"/>
+                        <outlet property="priceField" destination="Gcr-f9-89Q" id="8Ha-dx-2U8"/>
+                        <outlet property="storePicker" destination="8bK-lI-wal" id="Q1Y-Mm-Kka"/>
+                        <outlet property="thumbImage" destination="6ve-th-Kgs" id="Xp6-SJ-Zz4"/>
+                        <outlet property="titleField" destination="qEh-vD-te3" id="aRv-zl-cOn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gOG-ER-4kT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

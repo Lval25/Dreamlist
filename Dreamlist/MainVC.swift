@@ -36,7 +36,7 @@ class MainVC: UIViewController, UITableViewDataSource,UITableViewDelegate, NSFet
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //creating a cell
-        let cell = tableview.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! Itemcell
+        let cell = tableview.dequeueReusableCell(withIdentifier: "Itemcell", for: indexPath) as! Itemcell
         //passing it into configurecell function
         configureCell(cell: cell, indexPath: indexPath as NSIndexPath)
         
@@ -82,6 +82,8 @@ class MainVC: UIViewController, UITableViewDataSource,UITableViewDelegate, NSFet
         fetchRequest.sortDescriptors = [dateSort]
         
         let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        controller.delegate = self
+        
         self.controller = controller
         
         do{
@@ -102,6 +104,28 @@ class MainVC: UIViewController, UITableViewDataSource,UITableViewDelegate, NSFet
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableview.endUpdates()
     }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let objs = controller.fetchedObjects, objs.count > 0 {
+            //edit existing item
+            let item = objs[indexPath.row]
+            performSegue(withIdentifier: "ItemDetailsVC", sender: item)
+        }
+    }
+    //pass data from original view to itemToEdit
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ItemDetailsVC" {
+            if let destination = segue.destination as? ItemDetailsVC{
+                if let item = sender as? Item{
+                    destination.itemToedit = item
+                    
+                }
+            }
+        }
+        
+    }
+    
     
     
     
@@ -142,10 +166,10 @@ class MainVC: UIViewController, UITableViewDataSource,UITableViewDelegate, NSFet
     
     func generateTestData() {
         
-        let item = Item(context: context)
-        item.title = "New Macbook Pro"
-        item.price = 2000
-        item.details = "New Flashy mac book pro"
+//        let item = Item(context: context)
+//        item.title = "New Macbook Pro"
+//        item.price = 2000
+//        item.details = "New Flashy mac book pro"
         
         ad.saveContext()
         
